@@ -8,9 +8,9 @@ set -e
 while true; do
     read -p "Enter the letter of the client you would like to install:" answ
     case $answ in
-        [Aa]* ) CLIENT=client_a;;
-        [Bb]* ) CLIENT=client_b;;
-        [Cc]* ) CLIENT=client_c;;
+        [Aa]* ) CLIENT="client_a/ALIS";;
+        [Bb]* ) CLIENT="client_b/ALIS";;
+        [Cc]* ) CLIENT="client_c/ALIS";;
         * ) echo "That is not a valid client. Try again.";;
     esac
 done
