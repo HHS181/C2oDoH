@@ -141,6 +141,6 @@ d-i finish-install/reboot_in_progress note
 ### Download and execute the Post-Install script
 d-i preseed/late_command string \
 in-target mkdir /root/temp ; \
-in-target curl https://raw.githubusercontent.com/HHS181/C2oDoH/master/Internal_Resolver/TLSpostscript.sh -o /root/temp/postscript.sh ; \
+in-target curl https://raw.githubusercontent.com/HHS181/C2oDoH/master/TLS_Proxy/TLSpostscript.sh -o /root/temp/postscript.sh ; \
 in-target chmod +x /root/temp/postscript.sh ; \
 in-target /root/temp/postscript.sh

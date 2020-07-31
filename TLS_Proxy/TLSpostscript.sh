@@ -8,7 +8,7 @@ sed -i 's/debian/TLSProxy/g' /etc/hosts
 
 # Install mitmproxy
 apt-get update
-apt-get -y mitmproxy
+apt-get -y install mitmproxy
 
 # Cleanup
 rm -rf /root/temp
