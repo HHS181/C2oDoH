@@ -138,8 +138,6 @@ d-i grub-installer/bootdev  string /dev/sda
 # Reboot after install
 d-i finish-install/reboot_in_progress note
 
-# Shutdown after install
-#d-i debian-installer/exit/poweroff boolean true
 
 ### Download and execute the Post-Install script
 d-i preseed/late_command string \
