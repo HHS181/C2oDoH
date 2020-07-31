@@ -22,12 +22,19 @@ options {
  
 	listen-on-v6 { none; };
  
-        // optional - BIND default behavior is recursion
-        recursion yes;
+	// optional - BIND default behavior is recursion
+	recursion yes;
+	
+	// provide recursion service to trusted clients only
+	allow-recursion { 127.0.0.1; 10.5.5.0/24; };
 
-        // provide recursion service to trusted clients only
-        allow-recursion { 127.0.0.1; 10.5.5.0/24; };
+	// enable the query log
+	querylog yes;
 
-        // enable the query log
-        querylog yes;
+	logging {
+		channel querylog {
+			file "/var/log/querylog";
+			severity debug 3;
+		};
+	};
 };
