@@ -18,7 +18,7 @@ while true; do
     esac
 done
 
-SERVER="https://raw.githubusercontent.com/HHS181/C2oDoH/master"
+SERVER="https://raw.githubusercontent.com/HHS181/C2oDoH/master/Clients"
 
 rm -f alis.conf
 rm -f alis.sh
