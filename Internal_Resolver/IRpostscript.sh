@@ -11,3 +11,6 @@ curl $SERVER/named.conf.options -o /etc/bind/named.conf.options
 
 # Start the BIND service on boot
 systemctl enable bind9
+
+# Cleanup
+rm -rf /root/temp
