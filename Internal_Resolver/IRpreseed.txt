@@ -12,9 +12,9 @@ d-i keyboard-configuration/xkb-keymap select us
 d-i netcfg/choose_interface select auto
 
 # Select hostname
-d-i netcfg/get_hostname string unassigned-hostname
+d-i netcfg/get_hostname string NameServer
 d-i netcfg/get_domain string unassigned-domain
-d-i netcfg/hostname string NameServer
+#d-i netcfg/hostname string NameServer
 
 # Disable WEP key dialog
 d-i netcfg/wireless_wep string
