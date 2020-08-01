@@ -1520,9 +1520,9 @@ function main() {
     fi
     execute_step "packages" "${STEPS}"
     execute_step "systemd_units" "${STEPS}"
+    late_command
     execute_step "terminate" "${STEPS}"
     execute_step "end" "${STEPS}"
-    late_command
 }
 
 main $@
