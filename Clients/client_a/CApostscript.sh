@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SERVER="https://raw.githubusercontent.com/HHS181/C2oDoH/master/Clients"
+scDir="/home/user/.scripts"
 
 # Download TLS Proxy certificate and install it
 curl http://10.5.5.254:8000/.mitmproxy/mitmproxy-ca.pem -o mitmproxy-ca.pem
@@ -12,15 +13,16 @@ mkdir /home/user/PartyLoud
 git clone https://github.com/realtho/PartyLoud.git /home/user/PartyLoud
 
 # Download additional scripts
-curl $SERVER/proxyup.sh -o /home/user/.config/proxyup.sh
-curl $SERVER/proxydown.sh -o /home/user/.config/proxydown.sh
-chmod a+x /home/user/proxyup.sh
-chmod a+x /home/user/proxydown.sh
+mkdir $scDir
+curl $SERVER/proxyup.sh -o $scDir/proxyup.sh
+curl $SERVER/proxydown.sh -o $scDir/proxydown.sh
+chmod a+x $scDir/proxyup.sh
+chmod a+x $scDir/proxydown.sh
 
 # Set additional configs
 curl $SERVER/client_a/partyloud.conf -o /home/user/PartyLoud/partyloud.conf
-echo "alias proxyup='. /home/user/.config/proxyup.sh'" >> /home/user/.bashrc
-echo "alias proxydown='. /home/user/.config/proxydown.sh'" >> /home/user/.bashrc
+echo "alias proxyup='. $scDir/proxyup.sh'" >> /home/user/.bashrc
+echo "alias proxydown='. $scDir/proxydown.sh'" >> /home/user/.bashrc
 
 # Change ownership of all files in user home directory
 chown -R user:user /home/user
