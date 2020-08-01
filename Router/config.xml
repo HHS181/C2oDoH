@@ -58,6 +58,9 @@
 		<dns1gw>none</dns1gw>
 		<dnsserver>9.9.9.9</dnsserver>
 		<dnsallowoverride></dnsallowoverride>
+		<mds_disable>0</mds_disable>
+		<use_mfs_tmp_size></use_mfs_tmp_size>
+		<use_mfs_var_size></use_mfs_var_size>
 	</system>
 	<interfaces>
 		<wan>
@@ -215,7 +218,7 @@
 				<ldap></ldap>
 			</staticmap>
 			<staticmap>
-				<mac>08:00:27:ff:ff:ee</mac>
+				<mac>08:00:27:7a:80:26</mac>
 				<cid>TLS Proxy</cid>
 				<ipaddr>10.5.5.254</ipaddr>
 				<hostname></hostname>
@@ -297,6 +300,67 @@
 	<filter>
 		<rule>
 			<id></id>
+			<tracker>0100000101</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet46</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<source>
+				<network>lan</network>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<disabled></disabled>
+			<descr><![CDATA[Default allow LAN to any rule (troubleshooting)]]></descr>
+			<updated>
+				<time>1596297488</time>
+				<username><![CDATA[admin@10.5.5.250 (Local Database)]]></username>
+			</updated>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1596297138</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<protocol>icmp</protocol>
+			<icmptype>any</icmptype>
+			<source>
+				<network>lan</network>
+			</source>
+			<destination>
+				<any></any>
+			</destination>
+			<descr><![CDATA[Allow ICMP globally]]></descr>
+			<updated>
+				<time>1596297138</time>
+				<username><![CDATA[admin@10.5.5.250 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1596297138</time>
+				<username><![CDATA[admin@10.5.5.250 (Local Database)]]></username>
+			</created>
+		</rule>
+		<rule>
+			<id></id>
 			<tracker>1596198833</tracker>
 			<type>pass</type>
 			<interface>lan</interface>
@@ -316,18 +380,51 @@
 			</source>
 			<destination>
 				<any></any>
-				<port>HTTP</port>
+				<port>80</port>
 			</destination>
-			<log></log>
 			<descr><![CDATA[Allow HTTP(S) traffic from clients]]></descr>
 			<created>
 				<time>1596198833</time>
 				<username><![CDATA[admin@10.5.5.250 (Local Database)]]></username>
 			</created>
 			<updated>
-				<time>1596204771</time>
+				<time>1596297440</time>
 				<username><![CDATA[admin@10.5.5.250 (Local Database)]]></username>
 			</updated>
+		</rule>
+		<rule>
+			<id></id>
+			<tracker>1596297434</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag></tag>
+			<tagged></tagged>
+			<max></max>
+			<max-src-nodes></max-src-nodes>
+			<max-src-conn></max-src-conn>
+			<max-src-states></max-src-states>
+			<statetimeout></statetimeout>
+			<statetype><![CDATA[keep state]]></statetype>
+			<os></os>
+			<protocol>tcp</protocol>
+			<source>
+				<address>Clients</address>
+			</source>
+			<destination>
+				<any></any>
+				<port>443</port>
+			</destination>
+			<log></log>
+			<descr><![CDATA[Allow HTTP(S) traffic from clients]]></descr>
+			<updated>
+				<time>1596297434</time>
+				<username><![CDATA[admin@10.5.5.250 (Local Database)]]></username>
+			</updated>
+			<created>
+				<time>1596297434</time>
+				<username><![CDATA[admin@10.5.5.250 (Local Database)]]></username>
+			</created>
 		</rule>
 		<rule>
 			<id></id>
@@ -350,7 +447,7 @@
 			</source>
 			<destination>
 				<any></any>
-				<port>HTTP</port>
+				<port>Browsing</port>
 			</destination>
 			<descr><![CDATA[Allow HTTP(S) traffic from clients]]></descr>
 			<updated>
@@ -397,34 +494,6 @@
 		</rule>
 		<rule>
 			<id></id>
-			<tracker>0100000101</tracker>
-			<type>pass</type>
-			<interface>lan</interface>
-			<ipprotocol>inet46</ipprotocol>
-			<tag></tag>
-			<tagged></tagged>
-			<max></max>
-			<max-src-nodes></max-src-nodes>
-			<max-src-conn></max-src-conn>
-			<max-src-states></max-src-states>
-			<statetimeout></statetimeout>
-			<statetype><![CDATA[keep state]]></statetype>
-			<os></os>
-			<source>
-				<network>lan</network>
-			</source>
-			<destination>
-				<any></any>
-			</destination>
-			<disabled></disabled>
-			<descr><![CDATA[Default allow LAN to any rule]]></descr>
-			<updated>
-				<time>1596200980</time>
-				<username><![CDATA[admin@10.5.5.250 (Local Database)]]></username>
-			</updated>
-		</rule>
-		<rule>
-			<id></id>
 			<tracker>1596199131</tracker>
 			<type>block</type>
 			<interface>lan</interface>
@@ -458,23 +527,22 @@
 			<lan></lan>
 		</separator>
 	</filter>
-	<shaper>
-	</shaper>
+	<shaper></shaper>
 	<ipsec></ipsec>
 	<aliases>
+		<alias>
+			<name>Browsing</name>
+			<type>port</type>
+			<address>80 443</address>
+			<descr><![CDATA[HTTP and HTTPS ports]]></descr>
+			<detail><![CDATA[HTTP||HTTPS]]></detail>
+		</alias>
 		<alias>
 			<name>Clients</name>
 			<type>host</type>
 			<address>10.5.5.31 10.5.5.32 10.5.5.33</address>
 			<descr><![CDATA[Client Machines]]></descr>
 			<detail><![CDATA[Client A||Client B||Client C]]></detail>
-		</alias>
-		<alias>
-			<name>HTTP</name>
-			<type>port</type>
-			<address>80 443</address>
-			<descr><![CDATA[HTTP and HTTPS ports]]></descr>
-			<detail><![CDATA[HTTP||HTTPS]]></detail>
 		</alias>
 		<alias>
 			<name>Observation</name>
@@ -544,6 +612,7 @@
 	<wol></wol>
 	<rrd>
 		<enable></enable>
+		<category>left=system-processor&amp;right=&amp;resolution=300&amp;timePeriod=-1d&amp;startDate=&amp;endDate=&amp;startTime=0&amp;endTime=0&amp;graphtype=line&amp;invert=true&amp;refresh-interval=0</category>
 	</rrd>
 	<load_balancer>
 		<monitor_type>
@@ -593,8 +662,7 @@
 		<period>10</period>
 	</widgets>
 	<openvpn></openvpn>
-	<dnshaper>
-	</dnshaper>
+	<dnshaper></dnshaper>
 	<unbound>
 		<dnssec></dnssec>
 		<active_interface>all</active_interface>
@@ -609,8 +677,8 @@
 		<system_domain_local_zone_type>transparent</system_domain_local_zone_type>
 	</unbound>
 	<revision>
-		<time>1596204771</time>
-		<description><![CDATA[admin@10.5.5.250 (Local Database): Firewall: Rules - saved/edited a firewall rule.]]></description>
+		<time>1596297536</time>
+		<description><![CDATA[admin@10.5.5.250 (Local Database): Firewall: Rules - reordered firewall rules.]]></description>
 		<username><![CDATA[admin@10.5.5.250 (Local Database)]]></username>
 	</revision>
 	<cert>
