@@ -8,16 +8,19 @@ openssl x509 -in mitmproxy-ca.pem -inform PEM -out ca.crt
 trust anchor ca.crt
 
 # Clone git repositories
-git clone https://github.com/realtho/PartyLoud.git /home/user
+mkdir /home/user/PartyLoud
+git clone https://github.com/realtho/PartyLoud.git /home/user/PartyLoud
 
 # Download additional scripts
-curl $SERVER/proxyup.sh -o /home/user/proxyup.sh
-curl $SERVER/proxydown.sh -o /home/user/proxydown.sh
+curl $SERVER/proxyup.sh -o /home/user/.config/proxyup.sh
+curl $SERVER/proxydown.sh -o /home/user/.config/proxydown.sh
 chmod a+x /home/user/proxyup.sh
 chmod a+x /home/user/proxydown.sh
 
-# Download additional configs
+# Set additional configs
 curl $SERVER/client_a/partyloud.conf -o /home/user/PartyLoud/partyloud.conf
+echo "alias proxyup='. /home/user/.config/proxyup.sh'" >> /home/user/.bashrc
+echo "alias proxydown='. /home/user/.config/proxydown.sh'" >> /home/user/.bashrc
 
 # Change ownership of all files in user home directory
 chown -R user:user /home/user
