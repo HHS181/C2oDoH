@@ -30,6 +30,7 @@ chmod a+x $scDir/proxydown.sh
 curl $SERVER/client_b/partyloud.conf -o /home/user/PartyLoud/partyloud.conf
 echo "alias proxyup='. $scDir/proxyup.sh'" >> /home/user/.bashrc
 echo "alias proxydown='. $scDir/proxydown.sh'" >> /home/user/.bashrc
+echo "alias dnscat2='/home/user/dnscat2/client/dnscat2'" >> /home/user/.bashrc
 
 # Change ownership of all files in user home directory
 chown -R user:user /home/user
