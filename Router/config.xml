@@ -56,7 +56,7 @@
 		<timezone>Etc/UTC</timezone>
 		<language>en_US</language>
 		<dns1gw>none</dns1gw>
-		<dnsserver>9.9.9.9</dnsserver>
+		<dnsserver>8.8.8.8</dnsserver>
 		<dnsallowoverride></dnsallowoverride>
 		<mds_disable>0</mds_disable>
 		<use_mfs_tmp_size></use_mfs_tmp_size>
