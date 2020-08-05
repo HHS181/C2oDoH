@@ -16,7 +16,7 @@ git clone https://github.com/iagox86/dnscat2.git /home/user/dnscat2
 
 # Compile dnscat2 client
 cd /home/user/dnscat2/client/
-make
+make nocrypto
 cd -
 
 # Download additional scripts
