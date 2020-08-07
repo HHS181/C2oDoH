@@ -27,6 +27,7 @@ chmod a+x $scDir/proxyup.sh
 chmod a+x $scDir/proxydown.sh
 
 # Set additional configs
+curl $SERVER/20-connectivity.conf -o /etc/NetworkManager/conf.d/20-connectivity.conf
 curl $SERVER/client_b/partyloud.conf -o /home/user/PartyLoud/partyloud.conf
 echo "alias proxyup='. $scDir/proxyup.sh'" >> /home/user/.bashrc
 echo "alias proxydown='. $scDir/proxydown.sh'" >> /home/user/.bashrc
