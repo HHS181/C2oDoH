@@ -332,7 +332,7 @@ reject_ttl = 600
 
 ## Enable a DNS cache to reduce latency and outgoing traffic
 
-cache = true
+cache = false
 
 
 ## Cache size
