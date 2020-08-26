@@ -18,11 +18,6 @@ git clone https://github.com/realtho/PartyLoud.git /home/user/PartyLoud
 mkdir /home/user/dnscat2
 git clone https://github.com/iagox86/dnscat2.git /home/user/dnscat2
 
-# Compile dnscat2 client
-cd /home/user/dnscat2/client/
-make
-cd -
-
 # Download additional scripts
 mkdir $scDir
 curl $SERVER/proxyup.sh -o $scDir/proxyup.sh
@@ -39,7 +34,7 @@ curl $SERVER/client_c/dnscrypt-proxy.toml -o /etc/dnscrypt-proxy/dnscrypt-proxy.
 curl $SERVER/client_c/partyloud.conf -o /home/user/PartyLoud/partyloud.conf
 echo "alias proxyup='. $scDir/proxyup.sh'" >> /home/user/.bashrc
 echo "alias proxydown='. $scDir/proxydown.sh'" >> /home/user/.bashrc
-echo "alias dnscat2='/home/user/dnscat2/client/dnscat2'" >> /home/user/.bashrc
+echo "alias dnscat2='/home/user/dnscat2/client/dnscat'" >> /home/user/.bashrc
 
 # Change ownership of all files in user home directory
 chown -R user:user /home/user
