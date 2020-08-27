@@ -19,8 +19,12 @@ mkdir /etc/iptables
 curl $SERVER/rules.v4 -o /etc/iptables/rules.v4
 (echo "@reboot sleep 10 && iptables-restore < /etc/iptables/rules.v4") | crontab -
 
-# Setup simple HTTP server for certificate downloads
-(echo "@reboot sleep 10 && python3 -m http.server") | crontab -
+# Download proxy startup script
+curl $SERVER/proxy.sh -o /root/proxy.sh
+chmod +x /root/proxy.sh
+
+# Setup proxy script to run at boot
+(echo "@reboot sleep 10 && proxy.sh") | crontab -
 
 # Cleanup
 rm -rf /root/temp
