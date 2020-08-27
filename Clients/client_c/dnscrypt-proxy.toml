@@ -96,7 +96,7 @@ force_tcp = false
 ## HTTP/HTTPS proxy
 ## Only for DoH servers
 
-# http_proxy = 'http://127.0.0.1:8888'
+# http_proxy = 'http://10.5.5.254:8080'
 
 
 ## How long a DNS query will wait for a response, in milliseconds.
