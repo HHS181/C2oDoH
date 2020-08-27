@@ -28,6 +28,7 @@ chmod a+x $scDir/proxydown.sh
 # Set additional configs
 curl $SERVER/20-connectivity.conf -o /etc/NetworkManager/conf.d/20-connectivity.conf
 curl $SERVER/client_c/dns.conf -o /etc/NetworkManager/conf.d/dns.conf
+systemctl restart NetworkManager
 curl $SERVER/client_c/resolv.conf -o /etc/resolv.conf
 curl $SERVER/client_c/dnsmasq.conf -o /etc/dnsmasq.conf
 curl $SERVER/client_c/dnscrypt-proxy.toml -o /etc/dnscrypt-proxy/dnscrypt-proxy.toml
