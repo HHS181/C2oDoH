@@ -4,8 +4,8 @@
 stopScripts() {
     pkill youtube-dl
     pkill partyloud
-    rm 10\ Hours*
     cd -
+    rm 10\ Hours*
 }
 
 trap 'stopScripts' SIGINT
