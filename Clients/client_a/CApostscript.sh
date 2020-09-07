@@ -16,14 +16,17 @@ git clone https://github.com/realtho/PartyLoud.git /home/user/PartyLoud
 mkdir $scDir
 curl $SERVER/proxyup.sh -o $scDir/proxyup.sh
 curl $SERVER/proxydown.sh -o $scDir/proxydown.sh
+curl $SERVER/noise.sh -o $scDir/noise.sh
 chmod a+x $scDir/proxyup.sh
 chmod a+x $scDir/proxydown.sh
+chmod a+x $scDir/noise.sh
 
 # Set additional configs
 curl $SERVER/20-connectivity.conf -o /etc/NetworkManager/conf.d/20-connectivity.conf
 curl $SERVER/client_a/partyloud.conf -o /home/user/PartyLoud/partyloud.conf
 echo "alias proxyup='. $scDir/proxyup.sh'" >> /home/user/.bashrc
 echo "alias proxydown='. $scDir/proxydown.sh'" >> /home/user/.bashrc
+echo "alias noise='. $scDir/noise.sh'" >> /home/user/.bashrc
 
 # Change ownership of all files in user home directory
 chown -R user:user /home/user
