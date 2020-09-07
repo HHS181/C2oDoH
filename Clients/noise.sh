@@ -15,4 +15,4 @@ youtube-dl -q -r 48K https://www.youtube.com/watch?v=Tpk4q_Zo2ws &
 
 # Simulate web browsing
 cd /home/user/PartyLoud
-./partyloud
+./partyloud.sh
