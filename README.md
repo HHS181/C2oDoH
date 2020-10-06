@@ -12,27 +12,11 @@ When using these files to replicate results or present, please provide credit an
 
 
 ### What is C2oDoH
-In short, the principle of C2oDoH relies on the way that DNS can be used for C2 activities:
+In short, the principle of C2oDoH relies on the way that DNS can be used for C2 activities. The C2 client requests subdomains for a domain that the attacker controls. These subdomains can represent encoded text, or other values. The DNS C2 server answers these queries with IP addresses that correspond to command the client must execute. The feedback of the executed commands is then sent back to the C2 server by the client querying additional subdomains. In this situation, where DNS is used, the channel's communication is in plaintext (readily readable) and makes use of port 53/udp (easily blocked). 
 
-```seq
-C2 client->C2 DNS server: Command requests (DNS queries)
-C2 DNS server->C2 client: Commands (DNS answers)
-C2 client->C2 DNS server: Command feedback (DNS queries)
-C2 DNS server->C2 client: More commands (DNS answers)
-```
-In this situation, where DNS is used, the channel's communication is in plaintext (readily readable) and makes use of port 53/udp (easily blocked). 
+DoH changes this behavior by adding a layer of TLS encryption to the C2 channel. The client first initiates a TLS handshake with a DoH server (either a public one, or a private DoH server hosted by the attacker), which the server completes. Having completed the handshake, the C2 client can now use the DoH server to resolve queries destined for the attacker domain. The DNS C2 channel can then proceed as before, within the TLS connection.
 
-DoH changes this behavior by adding a layer of TLS encryption to the C2 channel:
-
-```seq
-C2 client->C2 DNS server: TLS handshake
-C2 DNS server->C2 client: TLS handshake
-C2 client->C2 DNS server: Command requests (DoH queries)
-C2 DNS server->C2 client: Commands (DoH answers)
-C2 client->C2 DNS server: Command feedback (DoH queries)
-C2 DNS server->C2 client: More commands (DoH answers)
-```
-Communication now takes place inside TLS encrypted packets and uses port 443/tcp. This presents network defenders with two problems:
+As communication now takes place inside TLS encrypted packets and uses port 443/tcp, this new form of communication presents network defenders with two problems:
 1. **Finding malicious C2 channels**: As communication is now encrypted, it cannot be decyphered without implementing solutions such as TLS inspection, decrypting all TLS encrypted network traffic. This potentially introduces new security risks to the network, and presents logistical problems with regards to inspecting all decrypted traffic.
 2. **Blocking malicious C2 channels**: Blocking malicious channels is no longer easily achieved as they make use of port 443/tcp, which is also used for legitimate HTTPS traffic to the internet.
 
