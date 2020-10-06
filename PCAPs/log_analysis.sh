@@ -48,7 +48,7 @@ sniAnalysis () {
     tshark -r $pcap -T ek -e tls.handshake.extensions_server_name | awk -F '[][]' '{print $2}' | tr -d '"' | tr "," "\n" | awk 'NF' | sort -u > $file1
     tshark -r $pcap -T ek -e dns.qry.name | awk -F '[][]' '{print $2}' | tr -d '"' | tr "," "\n" | awk 'NF' | sort -u > $file2
 
-    # Output list of possible C2 over DoH IP domains
+    # Output list of possible C2 over DoH domains
     comm -23 $file1 $file2
 
     # Execute cleanup function
